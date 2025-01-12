@@ -22,7 +22,7 @@ class CreateUserCommand extends Command
 
         $user->name = $this->getParameter('name', 'argument');
         $user->email = $this->getParameter('email', 'option');
-        $user->email = Hash::make($this->getParameter('password', 'option'));
+        $user->email = Hash::make($this->getParameter('password', 'option', true));
 
         if ($this->option('force') === true || $this->confirm('Save this user?', true)) {
             $exists = $this->userModel()->where([
