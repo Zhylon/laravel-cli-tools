@@ -56,9 +56,11 @@ class CreateUserCommand extends Command
         return self::FAILURE;
     }
 
-    private function getParameter(string $parameterName, string $type): string
+    private function getParameter(string $parameterName, string $type, bool $secret = false): string
     {
-        return ($this->$type($parameterName) === null) ? $this->ask("User $parameterName: ") : $this->$type($parameterName);
+        $prompt = $secret ? 'secret' : 'ask';
+
+        return ($this->$type($parameterName) === null) ? $this->$prompt("User $parameterName: ") : $this->$type($parameterName);
     }
 
     private function getUserClass(): string
