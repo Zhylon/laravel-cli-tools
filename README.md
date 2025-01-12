@@ -22,6 +22,15 @@ php artisan vendor:publish --tag="laravel-cli-tools"
 php artisan cli-tools:create-user [<name?>] --email[=EMAIL] --password[=PASSWORD] --force
 ```
 
+Example:
+```bash
+php artisan cli-tools:create-user
+php artisan cli-tools:create-user TestUser
+php artisan cli-tools:create-user TestUser --email=example.com
+php artisan cli-tools:create-user TestUser --email=example.com --password=secret
+php artisan cli-tools:create-user TestUser --email=example.com --password=secret --force
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
