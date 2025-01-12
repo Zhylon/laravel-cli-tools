@@ -14,6 +14,14 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-cli-tools"
 ```
 
+## Commands
+
+**Create User Command**
+
+```bash
+php artisan cli-tools:create-user [<name?>] --email[=EMAIL] --password[=PASSWORD] --force
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
