@@ -20,9 +20,9 @@ class CreateUserCommand extends Command
     {
         $user = $this->userModel();
 
-        $user->name = $this->getAttribute('name');
-        $user->email = $this->getAttribute('email');
-        $user->email = Hash::make($this->getAttribute('password'));
+        $user->name = $this->getParameter('name', 'argument');
+        $user->email = $this->getParameter('email', 'option');
+        $user->email = Hash::make($this->getParameter('password', 'option'));
 
         if ($this->option('force') === true || $this->confirm('Save this user?', true)) {
             $exists = $this->userModel()->where([
@@ -56,9 +56,9 @@ class CreateUserCommand extends Command
         return self::FAILURE;
     }
 
-    private function getAttribute(string $argument): string
+    private function getParameter(string $parameterName, string $type): string
     {
-        return ($this->argument($argument) === null) ? $this->ask("User $argument: ") : $this->argument($argument);
+        return ($this->$type($parameterName) === null) ? $this->ask("User $parameterName: ") : $this->$type($parameterName);
     }
 
     private function getUserClass(): string
