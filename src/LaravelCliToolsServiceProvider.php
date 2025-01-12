@@ -14,7 +14,7 @@ class LaravelCliToolsServiceProvider extends PackageServiceProvider
             ->name('laravel-cli-tools')
             ->hasConfigFile()
             ->hasCommands([
-                CreateUserCommand::class
+                CreateUserCommand::class,
             ]);
     }
 }

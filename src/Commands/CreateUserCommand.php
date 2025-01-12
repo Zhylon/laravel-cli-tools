@@ -3,8 +3,8 @@
 namespace Zhylon\LaravelCliTools\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUserCommand extends Command
 {
@@ -26,10 +26,10 @@ class CreateUserCommand extends Command
 
         if ($this->option('force') === true || $this->confirm('Save this user?', true)) {
             $exists = $this->userModel()->where([
-                'name'  => $user->name,
+                'name' => $user->name,
                 'email' => $user->email,
             ])->first();
-            if (!$exists) {
+            if (! $exists) {
                 $user->save();
                 $this->info('Created a new user with id: '.$user->id);
 
